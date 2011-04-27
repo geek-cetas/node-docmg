@@ -1,14 +1,16 @@
-var http = require('http');
-var controller = require('../webcetas.node/controller');
-var cms = require('./cms/conn/pool');
+var http = require('http'),
+    controller = require('../webcetas.node/controller'),
+    cms = require('./cms/conn/pool');
 require('./test');
+var args = process.argv;
+var port = args[2];
 
 function startServer()
 {
     http.createServer( function( req, res ) {
         res_handle = res;
         controller( req, res );
-       }).listen( 8090 );
+       }).listen( port );
 }
 
 cms.init();
