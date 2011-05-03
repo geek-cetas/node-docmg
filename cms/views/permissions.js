@@ -10,7 +10,7 @@ inherits( Operations, ev.EventEmitter );
 
 Operations.prototype.create = function( alias, name ) {
     var $ = this;
-    var perm = new permission({ 'name' : name, 'code' : alias });
+    var perm = new permission( {'name' : name, 'code' : alias} );
     perm.save( function( error ) {
         ex( $, error, function() { 
             $.emit( 'create', perm );

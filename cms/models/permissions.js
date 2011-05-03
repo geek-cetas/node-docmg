@@ -10,5 +10,6 @@ mongoose.model( 'Permission', Permission );
 
 module.exports = {Permission : function() { 
                     return mongoose.model('Permission');
-                    }
+                    },
+                 Permission_model : Permission
                  }

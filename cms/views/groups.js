@@ -10,15 +10,15 @@ inherits( Operations, ev.EventEmitter );
 
 Operations.prototype.create = function( name, permissions ) {
     var $ = this;
-    var grp = new group;
+    var grp = new group();
     grp.name = name;
     if( permissions )
-        grp.Permissions.push( {name : permissions.name,
-                               code : permissions.code} );
+        for( var index = 0; index < permissions.length; index++ )
+            grp.permissions.push( permissions[index]._id );
 
     grp.save( function( err ) {
         ex( $, err, function() {
-                $.emit( 'create', $.grp );
+                $.emit( 'create', grp );
             });
     });
 }
